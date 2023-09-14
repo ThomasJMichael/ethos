@@ -44,9 +44,9 @@ write_serial:
 
     mov dx, 0x3F8       ; COM1 Port Address
 .write_loop:
-    in al, dx
-    test al, 0x20       ; Check if transmitter holding register is empty
-    jz .write_loop
+    ;in al, dx
+    ;test al, 0x20       ; Check if transmitter holding register is empty
+    ;jz .write_loop
     
     lodsb
     or al, al
@@ -112,7 +112,7 @@ main:
 
     mov si, msg_name
     call init_serial
-    call test_serial
+    call write_serial
 
 .halt:
     jmp .halt
